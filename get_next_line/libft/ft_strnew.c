@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:13:09 by mchan             #+#    #+#             */
-/*   Updated: 2019/06/25 19:54:46 by mchan            ###   ########.fr       */
+/*   Created: 2019/05/06 11:48:16 by mchan             #+#    #+#             */
+/*   Updated: 2019/05/14 17:17:43 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strnew(size_t size)
 {
-	char	*result;
-	int		size1;
-	int		size2;
+	char		*str;
+	size_t		i;
 
-	if (s1 && s2)
+	if (!(str = ft_memalloc(size + 1)))
+		return (NULL);
+	i = 0;
+	while (i < size)
 	{
-		size1 = ft_strlen(s1);
-		size2 = ft_strlen(s2);
-		if (!(result = ft_strnew(size1 + size2)))
-			return (NULL);
-		ft_strncat(result, s1, size1 + 1);
-		ft_strncat(result, s2, size2 + 1);
-		return (result);
+		str[i] = '\0';
+		i++;
 	}
-	return (NULL);
+	return (str);
 }

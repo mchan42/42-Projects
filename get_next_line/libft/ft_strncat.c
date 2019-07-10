@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:13:09 by mchan             #+#    #+#             */
-/*   Updated: 2019/06/25 19:54:46 by mchan            ###   ########.fr       */
+/*   Created: 2019/05/04 01:26:54 by mchan             #+#    #+#             */
+/*   Updated: 2019/05/04 01:31:04 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	char	*result;
-	int		size1;
-	int		size2;
+	int			i;
+	size_t		j;
 
-	if (s1 && s2)
+	i = 0;
+	j = 0;
+	while (s1[i])
+		i++;
+	while (s2[j] && j < n)
 	{
-		size1 = ft_strlen(s1);
-		size2 = ft_strlen(s2);
-		if (!(result = ft_strnew(size1 + size2)))
-			return (NULL);
-		ft_strncat(result, s1, size1 + 1);
-		ft_strncat(result, s2, size2 + 1);
-		return (result);
+		s1[i] = s2[j];
+		i++;
+		j++;
 	}
-	return (NULL);
+	s1[i] = '\0';
+	return (s1);
 }

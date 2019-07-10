@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:13:09 by mchan             #+#    #+#             */
-/*   Updated: 2019/06/25 19:54:46 by mchan            ###   ########.fr       */
+/*   Created: 2019/05/03 17:24:40 by mchan             #+#    #+#             */
+/*   Updated: 2019/05/16 22:49:16 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*result;
-	int		size1;
-	int		size2;
+	size_t					i;
+	unsigned char			*ptr;
+	const unsigned char		*ptr2;
 
-	if (s1 && s2)
-	{
-		size1 = ft_strlen(s1);
-		size2 = ft_strlen(s2);
-		if (!(result = ft_strnew(size1 + size2)))
-			return (NULL);
-		ft_strncat(result, s1, size1 + 1);
-		ft_strncat(result, s2, size2 + 1);
-		return (result);
-	}
-	return (NULL);
+	ptr = (unsigned char*)dst;
+	ptr2 = (unsigned char*)src;
+	i = 0;
+	if (ptr > ptr2)
+		while (len >= ++i)
+			ptr[len - i] = ptr2[len - i];
+	else
+		while (len > 0)
+		{
+			if (!ptr && !ptr2)
+				return (dst);
+			*ptr = *ptr2;
+			ptr++;
+			ptr2++;
+			len--;
+		}
+	return (dst);
 }

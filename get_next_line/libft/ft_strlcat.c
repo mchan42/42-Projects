@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:13:09 by mchan             #+#    #+#             */
-/*   Updated: 2019/06/25 19:54:46 by mchan            ###   ########.fr       */
+/*   Created: 2019/05/04 01:42:14 by mchan             #+#    #+#             */
+/*   Updated: 2019/05/04 02:01:11 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char	*result;
-	int		size1;
-	int		size2;
+	size_t		i;
+	size_t		j;
+	size_t		result;
 
-	if (s1 && s2)
+	i = 0;
+	j = 0;
+	result = 0;
+	while (dst[i])
+		i++;
+	while (src[result])
+		result++;
+	if (dstsize <= i)
+		result += dstsize;
+	else
+		result += i;
+	while (src[j] && i + 1 < dstsize)
 	{
-		size1 = ft_strlen(s1);
-		size2 = ft_strlen(s2);
-		if (!(result = ft_strnew(size1 + size2)))
-			return (NULL);
-		ft_strncat(result, s1, size1 + 1);
-		ft_strncat(result, s2, size2 + 1);
-		return (result);
+		dst[i] = src[j];
+		i++;
+		j++;
 	}
-	return (NULL);
+	dst[i] = '\0';
+	return (result);
 }

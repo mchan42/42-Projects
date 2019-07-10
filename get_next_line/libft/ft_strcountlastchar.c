@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strcountlastchar.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:13:09 by mchan             #+#    #+#             */
-/*   Updated: 2019/06/25 19:54:46 by mchan            ###   ########.fr       */
+/*   Created: 2019/05/07 15:47:22 by mchan             #+#    #+#             */
+/*   Updated: 2019/05/07 16:13:35 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+unsigned int	ft_strcountlastchar(char *str, const char *charset)
 {
-	char	*result;
-	int		size1;
-	int		size2;
+	char			*ptr;
+	unsigned int	i;
+	int				index;
+	unsigned int	count;
+	unsigned int	tmp;
 
-	if (s1 && s2)
+	ptr = str;
+	count = 0;
+	index = (unsigned int)ft_strlen(ptr) - 1;
+	while (index >= 0)
 	{
-		size1 = ft_strlen(s1);
-		size2 = ft_strlen(s2);
-		if (!(result = ft_strnew(size1 + size2)))
-			return (NULL);
-		ft_strncat(result, s1, size1 + 1);
-		ft_strncat(result, s2, size2 + 1);
-		return (result);
+		i = 0;
+		tmp = count;
+		while (charset[i])
+			if (charset[i++] == ptr[index])
+				count++;
+		if (count == tmp)
+			return (count);
+		index--;
 	}
-	return (NULL);
+	return (count);
 }

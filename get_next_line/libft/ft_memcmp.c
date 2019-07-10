@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:13:09 by mchan             #+#    #+#             */
-/*   Updated: 2019/06/25 19:54:46 by mchan            ###   ########.fr       */
+/*   Created: 2019/05/03 18:55:29 by mchan             #+#    #+#             */
+/*   Updated: 2019/05/15 17:23:43 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*result;
-	int		size1;
-	int		size2;
+	size_t				i;
+	unsigned char		*ptr;
+	unsigned char		*ptr2;
 
-	if (s1 && s2)
+	if (n == 0)
+		return (0);
+	i = 0;
+	ptr = (unsigned char*)s1;
+	ptr2 = (unsigned char*)s2;
+	while (*ptr == *ptr2 && ++i < n)
 	{
-		size1 = ft_strlen(s1);
-		size2 = ft_strlen(s2);
-		if (!(result = ft_strnew(size1 + size2)))
-			return (NULL);
-		ft_strncat(result, s1, size1 + 1);
-		ft_strncat(result, s2, size2 + 1);
-		return (result);
+		ptr++;
+		ptr2++;
 	}
-	return (NULL);
+	return ((int)(*ptr - *ptr2));
 }

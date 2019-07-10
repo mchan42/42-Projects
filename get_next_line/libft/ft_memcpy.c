@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:13:09 by mchan             #+#    #+#             */
-/*   Updated: 2019/06/25 19:54:46 by mchan            ###   ########.fr       */
+/*   Created: 2019/04/30 21:59:49 by mchan             #+#    #+#             */
+/*   Updated: 2019/05/20 13:06:11 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char	*result;
-	int		size1;
-	int		size2;
+	unsigned char			*ptr;
+	const unsigned char		*ptr2;
 
-	if (s1 && s2)
+	ptr = (unsigned char*)dst;
+	ptr2 = (unsigned char*)src;
+	if (n > 0 && !ptr && !ptr2)
+		return (dst);
+	while (n-- > 0)
 	{
-		size1 = ft_strlen(s1);
-		size2 = ft_strlen(s2);
-		if (!(result = ft_strnew(size1 + size2)))
-			return (NULL);
-		ft_strncat(result, s1, size1 + 1);
-		ft_strncat(result, s2, size2 + 1);
-		return (result);
+		*ptr = *ptr2;
+		ptr++;
+		ptr2++;
 	}
-	return (NULL);
+	return (dst);
 }

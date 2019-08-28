@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarguer <jmarguer@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 13:43:39 by jmarguer          #+#    #+#             */
-/*   Updated: 2019/05/20 12:25:43 by jmarguer         ###   ########.fr       */
+/*   Created: 2019/05/20 19:23:10 by jmarguer          #+#    #+#             */
+/*   Updated: 2019/05/23 17:30:37 by jmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+int		ft_min(int a, int b)
 {
-	char	*new;
-
-	new = (char *)malloc(size + 1);
-	if (!new)
-		return (NULL);
-	ft_bzero(new, size + 1);
-	return (new);
+	if (a < b)
+		return (a);
+	else
+		return (b);
 }

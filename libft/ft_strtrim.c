@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jmarguer <jmarguer@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/06 16:40:57 by mchan             #+#    #+#             */
-/*   Updated: 2019/05/07 17:13:56 by mchan            ###   ########.fr       */
+/*   Created: 2019/05/09 17:20:06 by jmarguer          #+#    #+#             */
+/*   Updated: 2019/06/03 09:50:06 by jmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char			*result;
-	unsigned int	start;
-	unsigned int	size;
-	unsigned int	whitespacecount;
+	int		strlen;
+	int		start;
+	int		stop;
+	int		len;
 
-	if (!s)
+	if (s)
+	{
+		start = 0;
+		strlen = ft_strlen(s);
+		while (s[start] != '\0' && ISBLANK(s[start]))
+			start++;
+		stop = strlen - 1;
+		while (stop > 0 && ISBLANK(s[stop]))
+			stop--;
+		if (start == 0 && stop == strlen)
+			return ((char *)s);
+		len = ft_absolute(stop - start);
+		return (ft_strsub(s, start, len + 1));
+	}
+	else
 		return (NULL);
-	size = (unsigned int)ft_strlen(s);
-	whitespacecount = ft_strcountfirstchar((char*)s, " \n\t");
-	start = whitespacecount;
-	if (size > whitespacecount)
-		whitespacecount += ft_strcountlastchar((char*)s, " \n\t");
-	size -= whitespacecount;
-	if (!(result = ft_memalloc((size_t)size + 1)))
-		return (NULL);
-	result = ft_strncpy(result, (s + start), size);
-	return (result);
 }

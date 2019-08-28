@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_absolute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarguer <jmarguer@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 13:43:39 by jmarguer          #+#    #+#             */
-/*   Updated: 2019/05/20 12:25:43 by jmarguer         ###   ########.fr       */
+/*   Created: 2019/05/20 19:30:05 by jmarguer          #+#    #+#             */
+/*   Updated: 2019/05/20 19:31:00 by jmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+unsigned int	ft_absolute(int a)
 {
-	char	*new;
-
-	new = (char *)malloc(size + 1);
-	if (!new)
-		return (NULL);
-	ft_bzero(new, size + 1);
-	return (new);
+	if (a < 0)
+		return (-a);
+	else
+		return (a);
 }

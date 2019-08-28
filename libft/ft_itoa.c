@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: jmarguer <jmarguer@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 13:18:48 by mchan             #+#    #+#             */
-/*   Updated: 2019/05/13 15:54:37 by mchan            ###   ########.fr       */
+/*   Created: 2019/05/09 20:28:20 by jmarguer          #+#    #+#             */
+/*   Updated: 2019/05/20 10:31:19 by jmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 char	*ft_itoa(int n)
 {
-	char			*str;
-	unsigned int	nb;
-	unsigned int	index;
-	unsigned int	size;
+	char	*str;
 
-	if (n < 0)
-		nb = (unsigned int)(n * -1);
-	else
-		nb = (unsigned int)n;
-	size = (unsigned int)(ft_getnbrsize(nb));
-	index = 0;
-	if (!(str = (char*)malloc(sizeof(str) * (size + 1 + (n < 0 ? 1 : 0)))))
-		return (0);
-	if (n < 0 && (str[index] = '-'))
-		size++;
-	index = size - 1;
-	while (nb >= 10)
+	if (n == -2147483648)
 	{
-		str[index--] = (char)(nb % 10 + '0');
-		nb /= 10;
+		if (!(str = (char *)malloc(sizeof(char) * 12)))
+			return (NULL);
+		str = ft_strcpy(str, "-2147483648");
+		return (str);
 	}
-	str[index] = (char)(nb % 10 + '0');
-	str[size] = '\0';
+	if (!(str = (char *)malloc(sizeof(char) * 2)))
+		return (NULL);
+	if (n < 0)
+	{
+		str[0] = '-';
+		str[1] = '\0';
+		str = ft_strjoin(str, ft_itoa(-n));
+	}
+	else if (n >= 10)
+		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+	else if (n >= 0 && n <= 9)
+	{
+		str[0] = n + '0';
+		str[1] = '\0';
+	}
 	return (str);
 }

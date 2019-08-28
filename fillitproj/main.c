@@ -1,23 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmarguer <jmarguer@student.42.us.or>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/09 15:25:02 by jmarguer          #+#    #+#             */
-/*   Updated: 2019/05/20 20:28:24 by jmarguer         ###   ########.fr       */
+/*   Created: 2019/08/09 18:43:11 by jmarguer          #+#    #+#             */
+/*   Updated: 2019/08/20 17:54:51 by jmarguer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-int		ft_strequ(char const *s1, char const *s2)
+void	free_list(t_piece *list)
 {
-	if (s1 && s2)
+	t_piece		*tmp;
+
+	while (list)
 	{
-		if (ft_strcmp(s1, s2) == 0)
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
+}
+
+int		main(int argc, char **argv)
+{
+	t_piece		*piecelist;
+
+	if (argc == 2)
+	{
+		if ((piecelist = readinput(argv[1])) == NULL)
+		{
+			ft_putstr("error\n");
 			return (1);
+		}
+		solve(piecelist);
+		free_list(piecelist);
+	}
+	else
+	{
+		ft_putstr("usage: ");
+		ft_putstr(argv[0]);
+		ft_putstr(" [pieces.fillit]\n");
 	}
 	return (0);
 }

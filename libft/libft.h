@@ -6,7 +6,7 @@
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 15:14:17 by mchan             #+#    #+#             */
-/*   Updated: 2019/06/05 15:45:41 by mchan            ###   ########.fr       */
+/*   Updated: 2019/08/28 14:04:20 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 void				ft_swap(int *a, int *b);
+int					get_next_line(const int fd, char **line);
 
 #endif

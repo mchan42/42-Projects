@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmarguer <jmarguer@student.42.us.or>       +#+  +:+       +#+        */
+/*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/02 16:11:10 by jmarguer          #+#    #+#             */
-/*   Updated: 2019/05/31 19:39:11 by jmarguer         ###   ########.fr       */
+/*   Created: 2019/04/30 21:59:49 by mchan             #+#    #+#             */
+/*   Updated: 2019/05/20 13:06:11 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*ptr1;
-	unsigned char	*ptr2;
+	unsigned char			*ptr;
+	const unsigned char		*ptr2;
 
-	if (!dest && !src && n > 0)
-		return (NULL);
-	i = 0;
-	ptr1 = (unsigned char *)dest;
-	ptr2 = (unsigned char *)src;
-	while (i < n)
+	ptr = (unsigned char*)dst;
+	ptr2 = (unsigned char*)src;
+	if (n > 0 && !ptr && !ptr2)
+		return (dst);
+	while (n-- > 0)
 	{
-		ptr1[i] = ptr2[i];
-		i++;
+		*ptr = *ptr2;
+		ptr++;
+		ptr2++;
 	}
-	return (dest);
+	return (dst);
 }

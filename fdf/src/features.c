@@ -6,7 +6,7 @@
 /*   By: mchan <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:38:04 by mchan             #+#    #+#             */
-/*   Updated: 2019/11/06 18:04:07 by mchan            ###   ########.fr       */
+/*   Updated: 2019/11/06 15:37:10 by mchan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,21 @@ void	randomize_color_text(t_fdf *fdf)
 void	display_instructions(t_fdf *fdf)
 {
 	mlx_string_put(fdf->mlx.init, fdf->mlx.win, 0, 0, fdf->map.color, \
-			"[ESC]              ->      Exit Program");
+			"[ESC]				->		Exit Program");
 	mlx_string_put(fdf->mlx.init, fdf->mlx.win, 0, 20, fdf->map.color, \
-			"[MOUSE WHEEL]      ->      Increase or decrease z values");
+			"[MOUSE WHEEL]		->		Increase or decrease z values");
 	mlx_string_put(fdf->mlx.init, fdf->mlx.win, 0, 40, fdf->map.color, \
-			"[KEY W / S]        ->      Image movement up or down");
+			"[KEY W / S]		->		Image movement up or down");
 	mlx_string_put(fdf->mlx.init, fdf->mlx.win, 0, 60, fdf->map.color, \
-			"[KEY A / D]        ->      Image movement left or right");
+			"[KEY A / D]		->		Image movement left or right");
 	mlx_string_put(fdf->mlx.init, fdf->mlx.win, 0, 80, fdf->map.color, \
-			"[KEY Q / E]        ->      Increase or decrease zoom");
+			"[KEY Q / E]		->		Increase or decrease zoom");
 	mlx_string_put(fdf->mlx.init, fdf->mlx.win, 0, 100, fdf->map.color, \
-			"[KEY C]            ->      Randomize color of map");
+			"[KEY C]			->		Randomize color of map");
 	mlx_string_put(fdf->mlx.init, fdf->mlx.win, 0, 120, fdf->map.color, \
-			"[KEY V]            ->      Randomize color of text");
+			"[KEY V]			->		Randomize color of text");
 	mlx_string_put(fdf->mlx.init, fdf->mlx.win, 0, 140, fdf->map.color, \
-			"[KEY T / P]        ->      Switches projection");
+			"[KEY T / P]		->		Switches projection");
 }
 
 /*

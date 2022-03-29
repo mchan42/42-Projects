@@ -1,2 +1,3 @@
 # 42-Projects
-Projects for 42
+
+Projects completed while at 42 Silicon Valley after being accepted into the program on April 29th 2019.
